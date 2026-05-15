@@ -49,5 +49,5 @@ Remote-SSH
 Connect to Host
 <img width="996" height="348" alt="スクリーンショット 2026-05-08 143816" src="https://github.com/user-attachments/assets/54bdd852-c08c-426a-b554-70122f2b50f1" />
 
-ssh pbl6@IP
+pbl6@10.158.66.79
 <img width="988" height="245" alt="スクリーンショット 2026-05-08 143925" src="https://github.com/user-attachments/assets/4c39e551-d5b4-48ce-8d01-e4593e486480" />
