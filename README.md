@@ -20,6 +20,16 @@ ohmygood
 # TODO
 
 
+# リポジトリを各自PCにclone
+PowerShell
+```Bash
+cd ~
+git clone https://github.com/ユーザー名/リポジトリ名.git
+```
+
+cloneしたフォルダをVSCで開く→開発
+
+
 # PCからSSH接続(実機確認)
 PowerShell
 ```Bash
@@ -41,12 +51,3 @@ Connect to Host
 
 ssh pbl6@IP
 <img width="988" height="245" alt="スクリーンショット 2026-05-08 143925" src="https://github.com/user-attachments/assets/4c39e551-d5b4-48ce-8d01-e4593e486480" />
-
-# リポジトリを各自PCにclone
-PowerShell
-```Bash
-cd ~
-git clone https://github.com/ユーザー名/リポジトリ名.git
-```
-
-cloneしたフォルダをVSCで開く→開発
