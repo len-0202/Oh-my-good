@@ -20,7 +20,7 @@ ohmygood
 # TODO
 
 
-# PCからSSH接続
+# PCからSSH接続(実機確認)
 PowerShell
 ```Bash
 ssh pi@10.158.66.79
