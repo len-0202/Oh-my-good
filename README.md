@@ -19,6 +19,8 @@ ohmygood
 
 # TODO
 
+# ラズパイに変更を反映
+
 
 # リポジトリを各自PCにclone
 保存したいディレクトリでcmd
@@ -30,7 +32,7 @@ git clone https://github.com/len-0202/Oh-my-good-morning-_pbl07
 cloneしたフォルダをVSCで開く→開発
 
 
-# PCからSSH接続(初回のみ)
+# PCからSSH接続
 
 以下はRenのwifiに接続した際のIPなので、適宜@以降を変更して実行すること。
 
