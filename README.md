@@ -13,7 +13,7 @@ pass
 ohmygood
 ```
 
-#### ラズパイ本体への上書きは同じWifiに接続する必要があります
+#### ラズパイ本体への上書きはSSH接続する必要があります
 #### 持ち帰って作業を行う際はPC上でのデバッグのみになります
 
 
@@ -30,7 +30,10 @@ git clone https://github.com/len-0202/Oh-my-good-morning-_pbl07
 cloneしたフォルダをVSCで開く→開発
 
 
-# PCからSSH接続(実機確認)
+# PCからSSH接続(初回のみ)
+
+以下はRenのwifiに接続した際のIPなので、適宜@以降を変更して実行すること。
+
 PowerShell
 ```Bash
 ssh pi@10.158.66.79
