@@ -56,4 +56,6 @@ pbl6@10.158.66.79
 <img width="988" height="245" alt="スクリーンショット 2026-05-08 143925" src="https://github.com/user-attachments/assets/4c39e551-d5b4-48ce-8d01-e4593e486480" />
 
 # フローチャート
+<img width="622" height="689" alt="スクリーンショット 2026-05-15 13 30 15" src="https://github.com/user-attachments/assets/93caad8e-ed09-40d3-9bca-fe193f6cb8f9" />
+
 
