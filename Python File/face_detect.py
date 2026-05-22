@@ -2,9 +2,16 @@ import cv2
 import time
 
 # Load face detection model
+
+"""
 face_cascade = cv2.CascadeClassifier(
     cv2.data.haarcascades +
     'haarcascade_frontalface_default.xml'
+)
+"""
+
+face_cascade = cv2.CascadeClassifier(
+    "/home/pbl7/opencv_data/haarcascade_frontalface_default.xml"
 )
 
 # Open USB webcam
