@@ -18,7 +18,17 @@ ohmygood
 
 
 # TODO
+[x] 画像認識
+[x] スピーカー出力
+[x] 居眠り検知
+[x] メイン関数
+[x] ハード制御
+[x] モード選択
 
+# ラズパイに変更を反映
+```Bash
+git pull
+```
 
 # リポジトリを各自PCにclone
 保存したいディレクトリでcmd
@@ -30,7 +40,7 @@ git clone https://github.com/len-0202/Oh-my-good-morning-_pbl07
 cloneしたフォルダをVSCで開く→開発
 
 
-# PCからSSH接続(初回のみ)
+# PCからSSH接続
 
 以下はRenのwifiに接続した際のIPなので、適宜@以降を変更して実行すること。
 
