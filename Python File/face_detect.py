@@ -10,7 +10,6 @@ face_cascade = cv2.CascadeClassifier(
 )
 
 eye_cascade = cv2.CascadeClassifier(
-    cv2.data.haarcascades +
     "/home/pbl7/opencv_data/haarcascade_frontalface_default.xml"
 )
 
