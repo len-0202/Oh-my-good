@@ -6,7 +6,7 @@ import os
 # LOAD HAAR CASCADES
 # =========================================
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 face_cascade = cv2.CascadeClassifier(
     os.path.join(BASE_DIR, "cascades", "haarcascade_frontalface_default.xml")
