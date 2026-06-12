@@ -1,16 +1,19 @@
 import cv2
 import time
+import os
 
 # =========================================
 # LOAD HAAR CASCADES
 # =========================================
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 face_cascade = cv2.CascadeClassifier(
-    "/home/pbl7/opencv_data/haarcascade_frontalface_default.xml"
+    os.path.join(BASE_DIR, "cascades", "haarcascade_frontalface_default.xml")
 )
 
 eye_cascade = cv2.CascadeClassifier(
-    "/home/pbl7/opencv_data/haarcascade_eye.xml"
+    os.path.join(BASE_DIR, "cascades", "haarcascade_eye.xml")
 )
 
 # =========================================
