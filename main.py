@@ -15,7 +15,8 @@ print(f"value: {switch}")
 
 while True:
     if switch == 1:
-        Camera_judge += CAMERA() #カメラの画像認識
+        CAMERA() #カメラの画像認識
+        Camera_judge += CAMERA_STATUS
         Sleepy_judge += Sleepy(Camera_judge) #居眠りの判定
     
         if Sleepy_judge >= 1: #居眠り中か判断
