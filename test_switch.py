@@ -3,12 +3,30 @@ import time
 
 SW_PIN = 18
 
-sw = gpiozero.DigitalInputDevice(SW_PIN)
+sw = gpiozero.DigitalInputDevice(SW_PIN, pull_up = False)
+
+sw_old = 0
+mode = False
 
 while True:
-    if(sw.value == 1):
+    sw = sw.value  # ボタンの状態を取得 (0 or 1)
+
+    # ボタンが押された瞬間
+    if sw == 1 and sw_old == 0:
+        mode = not mode  # モード切替
         print("ON")
+
+    sw_old = sw
+
+    if mode:
+        print("モードA実行中")
     else:
         print("OFF")
 
-    time.sleep(0.5)
+if(sw.value == 1):
+    print("ON")
+else:
+    print("OFF")
+
+time.sleep(0.5)
+
