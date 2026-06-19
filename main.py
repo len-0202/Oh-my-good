@@ -5,7 +5,7 @@ import os
 import pygame
 
 SW_PIN0 = 17
-SW_PIN1 = 18
+#SW_PIN1 = 18
 
 sw0 = gpiozero.DigitalInputDevice(SW_PIN0) 
 #sw1 = gpiozero.DigitalInputDevice(SW_PIN1) #緑
