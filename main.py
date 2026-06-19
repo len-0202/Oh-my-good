@@ -25,6 +25,6 @@ while True:
             #アームに信号を送信
             time.sleep(10) #10秒待機
 
-            music() # 音楽再生
+            #music() # 音楽再生
 
          
