@@ -3,7 +3,7 @@ import time
 import os
 
 # Global status variable for other modules
-CAMERA_STATUS = "NO_FACE"
+CAMERA_STATUS = 0
 
 
 def CAMERA():
@@ -49,7 +49,7 @@ def CAMERA():
     EYE_SLEEP_TIME = 10       # seconds
     HEAD_THRESHOLD = 40       # pixels
 
-    CAMERA_STATUS = "NO_FACE"
+    CAMERA_STATUS = 0
 
     print("Sleep Detection System Started")
 
@@ -80,7 +80,7 @@ def CAMERA():
 
         # No face detected
         if len(faces) == 0:
-            CAMERA_STATUS = "NO_FACE"
+            CAMERA_STATUS = 0
 
         for (x, y, w, h) in faces:
 
@@ -160,7 +160,7 @@ def CAMERA():
                 # Sleep detection by head
                 if head_elapsed > HEAD_SLEEP_TIME:
 
-                    CAMERA_STATUS = "SLEEP"
+                    CAMERA_STATUS = -1
                     head_sleep = True
 
                     cv2.putText(
@@ -207,7 +207,7 @@ def CAMERA():
 
                 eyes_closed_start = None
 
-                CAMERA_STATUS = "AWAKE"
+                CAMERA_STATUS = 1
 
                 cv2.putText(
                     frame,
@@ -240,7 +240,7 @@ def CAMERA():
                 # Sleep detection by eyes
                 if eye_elapsed > EYE_SLEEP_TIME:
 
-                    CAMERA_STATUS = "SLEEP"
+                    CAMERA_STATUS = -1
 
                     cv2.putText(
                         frame,
