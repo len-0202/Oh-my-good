@@ -3,6 +3,8 @@ import gpiozero
 import cv2
 import os
 import pygame
+import threading
+import face_detect
 
 #SW_PIN0 = 17
 #SW_PIN1 = 18
@@ -10,6 +12,12 @@ import pygame
 #sw0 = gpiozero.DigitalInputDevice(SW_PIN0) 
 #sw1 = gpiozero.DigitalInputDevice(SW_PIN1) #緑
 
+camera_thread = threading.Thread(
+    target=face_detect.CAMERA,
+    daemon=True
+)
+
+camera_thread.start()
 switch = input()
 print(f"value: {switch}")
 
