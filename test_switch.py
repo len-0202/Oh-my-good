@@ -23,10 +23,6 @@ while True:
     else:
         print("OFF")
 
-if(sw.value == 1):
-    print("ON")
-else:
-    print("OFF")
+    time.sleep(0.5)
 
-time.sleep(0.5)
 
