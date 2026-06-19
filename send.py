@@ -1,3 +1,4 @@
+"""
 import RPi.GPIO as GPIO
 import requests
 import time
@@ -24,3 +25,4 @@ try:
 
 except KeyboardInterrupt:
     GPIO.cleanup()
+"""
