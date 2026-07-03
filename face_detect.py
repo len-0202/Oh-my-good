@@ -256,23 +256,26 @@ def CAMERA():
                     print("EYES_CLOSED_SLEEP")
                 else:
                     CAMERA_STATUS=0
-        if CAMERA_STATUS==0:
-            status_text="AWAKE"
-            status_color=(2,255,0)
+        # =========================================
+        # SHOW CURRENT STATUS
+        # =========================================
+
+        if CAMERA_STATUS == 0:
+            status_text = "AWAKE"
+            status_color = (0, 255, 0)
         else:
             status_text = "SLEEPING"
             status_color = (0, 0, 255)
 
-            # Show current status
-            cv2.putText(
-                frame,
-                f"STATUS: {CAMERA_STATUS}",
-                (10, 220),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.6,
-                (255, 255, 255),
-                2
-            )
+        cv2.putText(
+            frame,
+            f"STATUS: {status_text}",
+            (10, 220),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.6,
+            status_color,
+            2
+        )
 
         # =========================================
         # SHOW WINDOW
