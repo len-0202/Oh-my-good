@@ -1,3 +1,4 @@
+'''
 import gpiozero
 import time
 
@@ -24,5 +25,26 @@ while True:
         print("OFF")
 
     time.sleep(0.5)
+'''
 
+from gpiozero import Button
+import time
 
+button = Button(18, pull_up=False, bounce_time=0.05)
+
+mode = False
+
+while True:
+    if button.is_pressed:
+        mode = not mode
+        print("ON")
+
+        while button.is_pressed:
+            time.sleep(0.01)
+
+    if mode:
+        print("モードA実行中")
+    else:
+        print("OFF")
+
+    time.sleep(0.05)
