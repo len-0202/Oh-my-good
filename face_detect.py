@@ -21,7 +21,7 @@ def CAMERA():
     )
 
     eye_cascade = cv2.CascadeClassifier(
-        os.path.join(BASE_DIR, "cascades", "haarcascade_eye.xml")
+        os.path.join(BASE_DIR, "cascades", "haarcascade_eye_tree_eyeglasses.xml")
     )
 
     # =========================================
@@ -31,8 +31,8 @@ def CAMERA():
     cap = cv2.VideoCapture(0)
 
     # Lower resolution for better performance
-    cap.set(3, 320)
-    cap.set(4, 240)
+    cap.set(3, 800)
+    cap.set(4, 660)
 
     # =========================================
     # VARIABLES
