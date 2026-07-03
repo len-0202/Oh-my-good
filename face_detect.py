@@ -284,8 +284,8 @@ def CAMERA():
         cv2.imshow("Raspberry Pi Sleep Detection", frame)
 
         # Press q to quit
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+        #if cv2.waitKey(1) & 0xFF == ord('q'):
+          #  break
 
     # =========================================
     # CLEANUP
