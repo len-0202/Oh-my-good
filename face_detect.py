@@ -5,7 +5,8 @@ import os
 # Global status variable for other modules
 CAMERA_STATUS = 0
 
-
+def get_camera_status():
+    return CAMERA_STATUS
 def CAMERA():
     global CAMERA_STATUS
 
@@ -45,9 +46,9 @@ def CAMERA():
     head_down_start = None
 
     # Thresholds
-    HEAD_SLEEP_TIME = 30      # seconds
-    EYE_SLEEP_TIME = 10       # seconds
-    HEAD_THRESHOLD = 40       # pixels
+    HEAD_SLEEP_TIME = 20      # seconds
+    EYE_SLEEP_TIME = 5      # seconds
+    HEAD_THRESHOLD = 15      # pixels
 
     CAMERA_STATUS = 0
 
@@ -160,7 +161,7 @@ def CAMERA():
                 # Sleep detection by head
                 if head_elapsed > HEAD_SLEEP_TIME:
 
-                    CAMERA_STATUS = -1
+                    CAMERA_STATUS = 1
                     head_sleep = True
 
                     cv2.putText(
@@ -207,7 +208,7 @@ def CAMERA():
 
                 eyes_closed_start = None
 
-                CAMERA_STATUS = 1
+                CAMERA_STATUS = 0
 
                 cv2.putText(
                     frame,
@@ -240,7 +241,7 @@ def CAMERA():
                 # Sleep detection by eyes
                 if eye_elapsed > EYE_SLEEP_TIME:
 
-                    CAMERA_STATUS = -1
+                    CAMERA_STATUS = 1
 
                     cv2.putText(
                         frame,
@@ -253,6 +254,14 @@ def CAMERA():
                     )
 
                     print("EYES_CLOSED_SLEEP")
+                else:
+                    CAMERA_STATUS=0
+        if CAMERA_STATUS==0:
+            status_text="AWAKE"
+            status_color=(2,255,0)
+        else:
+            status_text = "SLEEPING"
+            status_color = (0, 0, 255)
 
             # Show current status
             cv2.putText(
