@@ -12,21 +12,15 @@ import face_detect
 #sw0 = gpiozero.DigitalInputDevice(SW_PIN0) 
 #sw1 = gpiozero.DigitalInputDevice(SW_PIN1) #緑
 
-camera_thread = threading.Thread(
-    target=face_detect.CAMERA,
-    daemon=True
-)
-
-camera_thread.start()
 print("値を入力→")
 switch = input()
 print(f"value: {switch}")
 
 while True:
     if switch == 1:
-        Sleepy_judge += CAMERA() #カメラの画像認識
+        camera_status = face_detect.get_camera_status() #カメラの画像認識
     
-        if Sleepy_judge == 1: #居眠り中か判断
+        if camera_status == 1: #居眠り中か判断
             print("居眠り中\n")
             print("アームに信号を送信")
 
