@@ -21,7 +21,7 @@ def CAMERA():
     )
 
     eye_cascade = cv2.CascadeClassifier(
-        os.path.join(BASE_DIR, "cascades", "haarcascade_eye_tree_eyeglasses.xml")
+        os.path.join(BASE_DIR, "cascades", "haarcascade_eye.xml")
     )
 
     # =========================================
