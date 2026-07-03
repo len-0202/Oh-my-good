@@ -12,7 +12,7 @@ import face_detect
 #sw0 = gpiozero.DigitalInputDevice(SW_PIN0) 
 #sw1 = gpiozero.DigitalInputDevice(SW_PIN1) #緑
 
-switch = input("値を入力してください: ")
+switch = int(input())
 
 if switch == 1:
     camera_status = face_detect.get_camera_status() #カメラの画像認識
