@@ -17,11 +17,13 @@ threading.Thread(
     daemon=True
 ).start()
 
-while True:
+switch = int(input("1を入力: "))
 
-    switch = int(input("1を入力: "))
+if switch == 1:
 
-    if switch == 1:
+    print("監視開始")
+
+    while True:
 
         if face_detect.get_camera_status() == 1:
             print("居眠り中")
@@ -31,6 +33,12 @@ while True:
             time.sleep(10) #10秒待機
 
             #music() # 音楽再生
+            break
 
-        else:#Sleepy_judge == 0
-            print("居眠りしていません")
+        else:
+            print("起きています")
+
+        time.sleep(1)
+
+else:
+    print("値が違います")
