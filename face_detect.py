@@ -31,8 +31,8 @@ def CAMERA():
     cap = cv2.VideoCapture(0)
 
     # Lower resolution for better performance
-    cap.set(3, 320)
-    cap.set(4, 240)
+    cap.set(3, 800)
+    cap.set(4, 660)
 
     # =========================================
     # VARIABLES
