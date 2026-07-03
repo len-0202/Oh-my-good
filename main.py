@@ -16,21 +16,21 @@ print("値を入力→")
 switch = input()
 print(f"value: {switch}")
 
-while True:
-    if switch == 1:
-        camera_status = face_detect.get_camera_status() #カメラの画像認識
+
+if switch == 1:
+    camera_status = face_detect.get_camera_status() #カメラの画像認識
     
-        if camera_status == 1: #居眠り中か判断
-            print("居眠り中\n")
-            print("アームに信号を送信")
+    if camera_status == 1: #居眠り中か判断
+        print("居眠り中\n")
+        print("アームに信号を送信")
 
-            #アームに信号を送信
-            time.sleep(10) #10秒待機
+        #アームに信号を送信
+        time.sleep(10) #10秒待機
 
-            #music() # 音楽再生
+        #music() # 音楽再生
 
-        else: #Sleepy_judge == 0
-            print("居眠りしていません\n")
-    else:
-        print("値が違います")
+    else: #Sleepy_judge == 0
+        print("居眠りしていません\n")
+else:
+    print("値が違います")
          
