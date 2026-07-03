@@ -18,16 +18,15 @@ camera_thread = threading.Thread(
 )
 
 camera_thread.start()
+print("値を入力→")
 switch = input()
 print(f"value: {switch}")
 
 while True:
     if switch == 1:
-        CAMERA() #カメラの画像認識
-        Camera_judge += CAMERA_STATUS
-        Sleepy_judge += Sleepy(Camera_judge) #居眠りの判定
+        Sleepy_judge += CAMERA() #カメラの画像認識
     
-        if Sleepy_judge >= 1: #居眠り中か判断
+        if Sleepy_judge == 1: #居眠り中か判断
             print("居眠り中\n")
             print("アームに信号を送信")
 
@@ -36,4 +35,8 @@ while True:
 
             #music() # 音楽再生
 
+        else: #Sleepy_judge == 0
+            print("居眠りしていません\n")
+    else:
+        print("値が違います")
          
