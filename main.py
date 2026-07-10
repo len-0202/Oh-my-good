@@ -1,11 +1,10 @@
 import time
-import gpiozero
+from gpiozero import Button
 import cv2
 import os
 import pygame
 import threading
 import face_detect
-import Button
 
 #SW_PIN0 = 17
 #SW_PIN1 = 18
