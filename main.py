@@ -2,6 +2,9 @@ import time
 from gpiozero import Button
 import cv2
 import os
+os.environ["SDL_AUDIODRIVER"] = "alsa"
+os.environ["AUDIODEV"] = "hw:3,0"
+import pygame
 import pygame
 import threading
 import face_detect
