@@ -21,8 +21,6 @@ threading.Thread(
     daemon=True
 ).start()
 
-switch = int(input("1を入力: "))
-
 while True:
     if button.is_pressed:
         mode = not mode
