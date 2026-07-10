@@ -31,27 +31,25 @@ while True:
             time.sleep(0.01)
 
         if mode:
-            while True:
+            if face_detect.get_camera_status() == 1:
 
-                if face_detect.get_camera_status() == 1:
+                print("居眠り中")
+                print("アームに信号を送信")
 
-                    print("居眠り中")
-                    print("アームに信号を送信")
+                # アーム制御
+                time.sleep(10)
+                #music() # 音楽再生
+                time.sleep(10)
 
-                    # アーム制御
-                    time.sleep(10)
-                    #music() # 音楽再生
-                    time.sleep(10)
+                print("起きるまで待機...")
 
-                    print("起きるまで待機...")
+                # 起きるまで待機
+                while face_detect.get_camera_status() == 1:
+                    time.sleep(0.5)
 
-                    # 起きるまで待機
-                    while face_detect.get_camera_status() == 1:
-                        time.sleep(0.5)
+                print("監視再開")
 
-                    print("監視再開")
-
-                time.sleep(0.5)
+            time.sleep(0.5)
 
         else:
             print("値が違います")
