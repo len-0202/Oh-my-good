@@ -52,6 +52,6 @@ while True:
             time.sleep(0.5)
 
         else:
-            print("値が違います")
+            print("監視終了")
 
         time.sleep(0.05)
