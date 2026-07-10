@@ -1,3 +1,6 @@
+import pygame
+import time
+
 def music():
     pygame.mixer.init()
 
@@ -17,3 +20,5 @@ def play_sound():
 
 pause()
 '''
+
+music()
