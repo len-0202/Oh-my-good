@@ -5,6 +5,7 @@ import os
 import pygame
 import threading
 import face_detect
+from music import music
 
 #SW_PIN0 = 17
 #SW_PIN1 = 18
@@ -20,6 +21,8 @@ threading.Thread(
     target=face_detect.CAMERA,
     daemon=True
 ).start()
+
+pygame.mixer.init()
 
 while True:
 

@@ -2,13 +2,11 @@ import pygame
 import time
 
 def music():
-    pygame.mixer.init()
-
     pygame.mixer.music.load("test.mp3")
     pygame.mixer.music.play()
 
     while pygame.mixer.music.get_busy():
-        time.sleep(1)
+        time.sleep(0.1)
 
 #上の6行目以降を編集
 '''
@@ -20,5 +18,3 @@ def play_sound():
 
 pause()
 '''
-
-music()
