@@ -15,12 +15,15 @@ def CAMERA():
     # =========================================
 
 
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
     face_cascade = cv2.CascadeClassifier(
-    cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+    os.path.join(BASE_DIR, "cascades", "haarcascade_frontalface_default.xml")
+    )
 
     eye_cascade = cv2.CascadeClassifier(
-    cv2.data.haarcascades + "haarcascade_eye.xml")
-
+    os.path.join(BASE_DIR, "cascades", "haarcascade_eye.xml")
+    )
     # =========================================
     # OPEN CAMERA (Raspberry Pi)
     # =========================================
@@ -299,3 +302,4 @@ def CAMERA():
 # Allows standalone testing
 if __name__ == "__main__":
     CAMERA()
+    
