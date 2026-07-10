@@ -14,25 +14,24 @@ def CAMERA():
     # LOAD HAAR CASCADES
     # =========================================
 
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
     face_cascade = cv2.CascadeClassifier(
-        os.path.join(BASE_DIR, "cascades", "haarcascade_frontalface_default.xml")
-    )
+    cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 
     eye_cascade = cv2.CascadeClassifier(
-        os.path.join(BASE_DIR, "cascades", "haarcascade_eye.xml")
-    )
+    cv2.data.haarcascades + "haarcascade_eye.xml")
 
     # =========================================
     # OPEN CAMERA (Raspberry Pi)
     # =========================================
 
     cap = cv2.VideoCapture(0)
-
+    if not cap.isOpened():
+        print("Cannot open camera")
+        return
     # Lower resolution for better performance
-    cap.set(3, 800)
-    cap.set(4, 660)
+    cap.set(3, 320)
+    cap.set(4, 240)
 
     # =========================================
     # VARIABLES
@@ -40,6 +39,7 @@ def CAMERA():
 
     # Eye timer
     eyes_closed_start = None
+    eyes_open_start = None
 
     # Head movement
     normal_center_y = None
@@ -48,7 +48,7 @@ def CAMERA():
     # Thresholds
     HEAD_SLEEP_TIME = 20      # seconds
     EYE_SLEEP_TIME = 5      # seconds
-    HEAD_THRESHOLD = 15      # pixels
+    HEAD_THRESHOLD = 20     # pixels
 
     CAMERA_STATUS = 0
 
@@ -204,12 +204,8 @@ def CAMERA():
                 )
 
             # Eyes open
+            
             if len(eyes) > 0:
-
-                eyes_closed_start = None
-
-                CAMERA_STATUS = 0
-
                 cv2.putText(
                     frame,
                     "EYES OPEN",
@@ -217,15 +213,24 @@ def CAMERA():
                     cv2.FONT_HERSHEY_SIMPLEX,
                     0.6,
                     (0, 255, 0),
-                    2
-                )
+                    )
+
+                 # Start eye-open timer
+                if eyes_open_start is None:
+                    eyes_open_start = time.time()
+
+                 # Reset only if eyes stay open for 1 second
+                if time.time() - eyes_open_start > 1:
+                    eyes_closed_start = None
+                    CAMERA_STATUS = 0
 
             # Eyes closed
             else:
 
+                # Reset eye-open timer
+                eyes_open_start = None
                 if eyes_closed_start is None:
                     eyes_closed_start = time.time()
-
                 eye_elapsed = time.time() - eyes_closed_start
 
                 cv2.putText(
@@ -238,7 +243,6 @@ def CAMERA():
                     2
                 )
 
-                # Sleep detection by eyes
                 if eye_elapsed > EYE_SLEEP_TIME:
 
                     CAMERA_STATUS = 1
@@ -255,27 +259,24 @@ def CAMERA():
 
                     print("EYES_CLOSED_SLEEP")
                 else:
-                    CAMERA_STATUS=0
-        # =========================================
-        # SHOW CURRENT STATUS
-        # =========================================
-
-        if CAMERA_STATUS == 0:
-            status_text = "AWAKE"
-            status_color = (0, 255, 0)
+                    CAMERA_STATUS = 0
+        if CAMERA_STATUS==0:
+            status_text="AWAKE"
+            status_color=(2,255,0)
         else:
             status_text = "SLEEPING"
             status_color = (0, 0, 255)
 
-        cv2.putText(
-            frame,
-            f"STATUS: {status_text}",
-            (10, 220),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.6,
-            status_color,
-            2
-        )
+            # Show current status
+            cv2.putText(
+                frame,
+                f"STATUS: {CAMERA_STATUS}",
+                (10, 220),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.6,
+                (255, 255, 255),
+                2
+            )
 
         # =========================================
         # SHOW WINDOW
@@ -284,8 +285,8 @@ def CAMERA():
         cv2.imshow("Raspberry Pi Sleep Detection", frame)
 
         # Press q to quit
-        #if cv2.waitKey(1) & 0xFF == ord('q'):
-          #  break
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
     # =========================================
     # CLEANUP
