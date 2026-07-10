@@ -43,7 +43,7 @@ while True:
 
             # アーム制御
             time.sleep(10)
-            #music() # 音楽再生
+            music() # 音楽再生
             time.sleep(10)
 
             print("起きるまで待機...")
