@@ -49,7 +49,7 @@ def CAMERA():
     head_down_start = None
 
     # Thresholds
-    HEAD_SLEEP_TIME = 20      # seconds
+    HEAD_SLEEP_TIME = 4      # seconds
     EYE_SLEEP_TIME = 5      # seconds
     HEAD_THRESHOLD = 15     # pixels
 
