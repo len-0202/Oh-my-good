@@ -28,7 +28,8 @@ while True:
         mode = not mode 
 
         if mode: 
-            print("監視開始") 
+            print("監視開始")
+            face_detect.start_camera() 
         else: 
             print("監視終了") 
         
