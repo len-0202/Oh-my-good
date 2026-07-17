@@ -32,7 +32,7 @@ def CAMERA():
     if not cap.isOpened():
         print("Cannot open camera")
         return
-    # Lower resolution for better performance
+    
     cap.set(3, 320)
     cap.set(4, 240)
 
@@ -43,13 +43,14 @@ def CAMERA():
     # Eye timer
     eyes_closed_start = None
     eyes_open_start = None
+    face_missing_start = None
 
     # Head movement
     normal_center_y = None
     head_down_start = None
 
     # Thresholds
-    HEAD_SLEEP_TIME = 20      # seconds
+    HEAD_SLEEP_TIME = 4      # seconds
     EYE_SLEEP_TIME = 5      # seconds
     HEAD_THRESHOLD = 15     # pixels
 
@@ -68,8 +69,6 @@ def CAMERA():
         if not ret:
             print("Camera not detected")
             break
-
-        # Convert to grayscale
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         # =========================================
@@ -84,9 +83,34 @@ def CAMERA():
 
         # No face detected
         if len(faces) == 0:
-            CAMERA_STATUS = 0
+            if face_missing_start is None:
+                face_missing_start = time.time()
+            missing_time = time.time() - face_missing_start
+
+            cv2.putText(
+                frame,
+                f"FACE LOST {int(missing_time)}s",
+                (10, 160),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.6,
+                (0, 255, 255),
+                2 
+            )
+            if missing_time > 20:
+                CAMERA_STATUS = 1
+                cv2.putText(
+                    frame,
+                    "SLEEP DETECTED",
+                    (10, 190),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.8,
+                    (0, 0, 255),
+                    3
+                )
+                print("FACE_NOT_DETECTED_SLEEP")
 
         for (x, y, w, h) in faces:
+            face_missing_start = None
 
             # Draw face rectangle
             cv2.rectangle(
