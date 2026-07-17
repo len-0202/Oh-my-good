@@ -4,9 +4,16 @@ import os
 
 # Global status variable for other modules
 CAMERA_STATUS = 0
+RUN_CAMERA = False
 
 def get_camera_status():
     return CAMERA_STATUS
+def start_camera():
+    global RUN_CAMERA
+    RUN_CAMERA = True
+def stop_camera():
+    global RUN_CAMERA
+    RUN_CAMERA = False
 def CAMERA():
     global CAMERA_STATUS
 
@@ -64,6 +71,9 @@ def CAMERA():
 
     while True:
 
+        if not RUN_CAMERA:
+            time.sleep(0.05)
+            continue
         ret, frame = cap.read()
 
         if not ret:

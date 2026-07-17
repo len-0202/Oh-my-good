@@ -29,6 +29,7 @@ while True:
 
         if mode:
             print("監視開始")
+            face_detect.start_camera()
         else:
             print("監視終了")
 
@@ -46,8 +47,9 @@ while True:
             music() # 音楽再生
             time.sleep(10)
 
+            face_detect.stop_camera()
             mode = False
             print("監視終了")
             print("ボタンを押すと監視を再開します")
-
+            
     time.sleep(0.1)
