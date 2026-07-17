@@ -10,12 +10,6 @@ import threading
 import face_detect
 from music import music
 
-#SW_PIN0 = 17
-#SW_PIN1 = 18
-
-#sw0 = gpiozero.DigitalInputDevice(SW_PIN0) 
-#sw1 = gpiozero.DigitalInputDevice(SW_PIN1) #緑
-
 button = Button(18, pull_up=False, bounce_time=0.05)
 
 mode = False
@@ -52,12 +46,8 @@ while True:
             music() # 音楽再生
             time.sleep(10)
 
-            print("起きるまで待機...")
-
-            # 起きるまで待機
-            while face_detect.get_camera_status() == 1:
-                time.sleep(0.5)
-
-            print("監視再開")
+            mode = False
+            print("監視終了")
+            print("ボタンを押すと監視を再開します")
 
     time.sleep(0.1)
