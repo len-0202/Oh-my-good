@@ -4,7 +4,7 @@ import os
 
 # Global status variable for other modules
 CAMERA_STATUS = 0
-RUN_CAMERA = True
+RUN_CAMERA = False
 
 def get_camera_status():
     return CAMERA_STATUS
@@ -16,9 +16,6 @@ def stop_camera():
     RUN_CAMERA = False
 def CAMERA():
     global CAMERA_STATUS
-    global RUN_CAMERA
-
-    RUN_CAMERA = True
 
     # =========================================
     # LOAD HAAR CASCADES
@@ -72,7 +69,7 @@ def CAMERA():
     # MAIN LOOP
     # =========================================
 
-    while RUN_CAMERA:
+    while True:
 
         if not RUN_CAMERA:
             time.sleep(0.05)
@@ -334,9 +331,6 @@ def CAMERA():
 
     cap.release()
     cv2.destroyAllWindows()
-
-    CAMERA_STATUS = 0
-    RUN_CAMERA = False
 
     print("Camera Stopped")
 
