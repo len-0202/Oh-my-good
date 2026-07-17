@@ -32,7 +32,7 @@ def CAMERA():
     if not cap.isOpened():
         print("Cannot open camera")
         return
-    # Lower resolution for better performance
+    
     cap.set(3, 320)
     cap.set(4, 240)
 
@@ -69,8 +69,6 @@ def CAMERA():
         if not ret:
             print("Camera not detected")
             break
-
-        # Convert to grayscale
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         # =========================================
