@@ -14,10 +14,7 @@ button = Button(18, pull_up=False, bounce_time=0.05)
 
 mode = False
 
-threading.Thread(
-    target=face_detect.CAMERA,
-    daemon=True
-).start()
+camera_thread = None
 
 pygame.mixer.init()
 
@@ -27,15 +24,22 @@ while True:
     if button.is_pressed:
         mode = not mode
 
-        if mode:
-            print("監視開始")
-            face_detect.start_camera()
-        else:
-            print("監視終了")
+    if mode:
+        print("監視開始")
 
-        while button.is_pressed:
-            time.sleep(0.01)
+        camera_thread = threading.Thread(
+            target=face_detect.CAMERA,
+            daemon=True
+        )
+        camera_thread.start()
 
+    else:
+        print("監視終了")
+        face_detect.stop_camera()
+
+    while button.is_pressed:
+        time.sleep(0.01)
+        
     if mode:
         if face_detect.get_camera_status() == 1:
 
@@ -51,5 +55,5 @@ while True:
             mode = False
             print("監視終了")
             print("ボタンを押すと監視を再開します")
-            
+
     time.sleep(0.1)
